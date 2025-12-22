@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -122,6 +124,11 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: string;
+  role: 'user' | 'judge' | 'admin';
+  username: string;
+  fname: string;
+  lname: string;
+  socialLinks?: SocialMediaLinks;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -142,6 +149,24 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Social Media Links".
+ */
+export interface SocialMediaLinks {
+  /**
+   * Go to Spotify, navigate to your profile, click the three dots "..." and then "Copy Link to Profile" and paste it here.
+   */
+  spotifyLink?: string | null;
+  /**
+   * Include full URL, e.g. https://instagram.com/yourhandle
+   */
+  instagramLink?: string | null;
+  /**
+   * Include full URL, e.g. https://tiktok.com/yourhandle
+   */
+  tiktokLink?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
@@ -158,6 +183,43 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  title: string;
+  slug: string;
+  layout: (Hero | SingleAudioPlayer)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Hero".
+ */
+export interface Hero {
+  heading: string;
+  subheading: string;
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SingleAudioPlayer".
+ */
+export interface SingleAudioPlayer {
+  producerName: string;
+  producerBio: string;
+  producerImage: string | Media;
+  audioFile: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'singleAudioPlayer';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -190,6 +252,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -238,6 +304,11 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  role?: T;
+  username?: T;
+  fname?: T;
+  lname?: T;
+  socialLinks?: T | SocialMediaLinksSelect<T>;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -257,6 +328,15 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Social Media Links_select".
+ */
+export interface SocialMediaLinksSelect {
+  spotifyLink?: boolean;
+  instagramLink?: boolean;
+  tiktokLink?: boolean;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
@@ -272,6 +352,45 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  layout?:
+    | T
+    | {
+        hero?: T | HeroSelect<T>;
+        singleAudioPlayer?: T | SingleAudioPlayerSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Hero_select".
+ */
+export interface HeroSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  image?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SingleAudioPlayer_select".
+ */
+export interface SingleAudioPlayerSelect<T extends boolean = true> {
+  producerName?: T;
+  producerBio?: T;
+  producerImage?: T;
+  audioFile?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
