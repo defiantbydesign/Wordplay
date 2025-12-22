@@ -55,8 +55,6 @@ Winning or featured artists may receive:
 
 ## 🛠️ Tech Stack
 
-> *(Adjust as needed)*
-
 * **Frontend:** React / Next.js
 * **Backend:** Node.js
 * **CMS / Admin:** Payload CMS
@@ -73,20 +71,6 @@ Winning or featured artists may receive:
 * Revenue participation only where explicitly stated
 
 *(This project is designed to avoid gambling, sweepstakes, or lottery classifications.)*
-
----
-
-## 📦 Getting Started (Development)
-
-```bash
-# install dependencies
-npm install
-
-# run locally
-npm run dev
-```
-
-Environment variables and setup instructions will be documented as the project matures.
 
 ---
 
