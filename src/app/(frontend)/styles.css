@@ -285,6 +285,7 @@ svg {
     cursor: pointer;
     overflow: hidden;
     margin-bottom: 0;
+    transition: none;
   }
 
   .trackSlider::-webkit-slider-thumb, .trackSlider::-moz-range-thumb {

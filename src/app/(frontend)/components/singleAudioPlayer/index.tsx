@@ -11,25 +11,35 @@ type singleAudioPlayerBlockProps = {
   producerBio: string
   block: Page['layout'][0]
 }
+let rafID: number
+let updateProgress: () => void
 
 export default function SingleAudioPlayer({ block }: { block: singleAudioPlayerBlockProps }) {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [duration, setDuration] = useState(0)
+  const [currentTime, setCurrentTime] = useState('0:00')
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    // Create Audio once
+    // Create Audio
     audioRef.current = new Audio(block.audioFile?.url)
 
-    const track = audioRef.current
+    updateProgress = () => {
+      if (audioRef.current) {
+        setCurrentTime(formatTime(audioRef.current.currentTime))
+      }
+      rafID = requestAnimationFrame(updateProgress)
+    }
+
     const onEnded = () => setIsPlaying(false)
-    track?.addEventListener('ended', onEnded)
+    audioRef.current?.addEventListener('ended', onEnded)
 
     const setMetaData = () => {
       // Calculate total duration of the song
-      setTotalTime(formatTime(track.duration))
+      setDuration(formatTime(audioRef.current.duration))
     }
-    track.addEventListener('loadedmetadata', setMetaData)
+    audioRef.current.addEventListener('loadedmetadata', setMetaData)
   }, [block.audioFile?.url])
 
   const togglePlay = () => {
@@ -37,15 +47,14 @@ export default function SingleAudioPlayer({ block }: { block: singleAudioPlayerB
 
     if (!isPlaying) {
       audioRef.current.play()
+      rafID = requestAnimationFrame(updateProgress)
     } else {
+      cancelAnimationFrame(rafID)
       audioRef.current.pause()
     }
 
     setIsPlaying(!isPlaying)
   }
-
-  const currentTime = '0:00'
-  const [totalTime, setTotalTime] = useState('0:00')
 
   const buttonClass = isPlaying ? 'playBtn' : 'playBtn pause'
 
@@ -75,7 +84,7 @@ export default function SingleAudioPlayer({ block }: { block: singleAudioPlayerB
         </div>
       </div>
       {typeof block?.audioFile === 'object' && block.audioFile?.url && (
-        <audio preload="true" className="audioElement">
+        <audio preload="true">
           <source src={block.audioFile.url} type={block.audioFile.mimeType || 'audio/mpeg'} />
         </audio>
       )}
@@ -85,13 +94,32 @@ export default function SingleAudioPlayer({ block }: { block: singleAudioPlayerB
           <span></span>
         </div>
         <div className="progressBarContainer">
-          <input type="range" name="trackProgress" id="trackProgress" className="trackSlider" />
+          <input
+            type="range"
+            name="trackProgress"
+            id="trackProgress"
+            className="trackSlider"
+            min={0}
+            max={audioRef.current?.duration}
+            step={0.01}
+            value={audioRef.current?.currentTime || 0}
+            onChange={(e) => {
+              const time = Number(e.target.value)
+              setCurrentTime(time)
+              if (audioRef.current) {
+                audioRef.current.currentTime = time
+              }
+            }}
+          />
           <div className="timeIndicators">
             <div className="currentTime">{currentTime}</div>
-            <div className="totalTime">{totalTime}</div>
+            <div className="totalTime">{duration}</div>
           </div>
         </div>
       </div>
+      <a href={block.audioFile?.url} download="Jan_2026_Wordplay_Beat" className="downloadBtn">
+        DOWNLOAD NOW
+      </a>
     </section>
   )
 }
