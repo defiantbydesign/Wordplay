@@ -1,67 +1,122 @@
-# Payload Blank Template
+# 🎧 Wordplay
 
-This template comes configured with the bare minimum to get started on anything you need.
+Wordplay is a community-driven music platform built to spotlight emerging hip‑hop and rap artists through curated instrumentals, creative challenges, and fair exposure.
 
-## Quick start
+The goal of Wordplay is simple: **give artists a reason to create, compete, and be discovered — without pay‑to‑win mechanics or exploitative models.**
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+---
 
-## Quick Start - local setup
+## 🚀 What is Wordplay?
 
-To spin up this template locally, follow these steps:
+Wordplay hosts recurring music challenges where artists:
 
-### Clone
+* Download or are assigned a featured instrumental
+* Create an original track within a set timeframe
+* Submit their work to the platform
+* Gain exposure through community discovery and curation
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+Winning or featured artists may receive:
 
-### Development
+* Exclusive or extended rights to the instrumental
+* Promotion on Wordplay channels
+* Placement on curated playlists
+* Revenue participation (where applicable)
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URI` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+---
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+## 🎯 Core Principles
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+* **Artist‑first** – No paid voting or gambling mechanics
+* **Skill over spend** – Creation and quality matter more than money
+* **Community discovery** – Fans and artists discover music together
+* **Transparency** – Clear rules, rights, and expectations
 
-#### Docker (Optional)
+---
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+## 🧩 Features (Current & Planned)
 
-To do so, follow these steps:
+### Current / MVP
 
-- Modify the `MONGODB_URI` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URI` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+* Artist submissions
+* Audio playback
+* Challenge-based structure
+* Public browsing of entries
 
-## How it works
+### Planned
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+* Artist profiles
+* Commenting & feedback
+* Curated judging panels
+* Playlist & platform integrations
+* Optional submissions fees (non‑voting)
+* Analytics for artists
 
-### Collections
+---
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+## 🛠️ Tech Stack
 
-- #### Users (Authentication)
+> *(Adjust as needed)*
 
-  Users are auth-enabled collections that have access to the admin panel.
+* **Frontend:** React / Next.js
+* **Backend:** Node.js
+* **CMS / Admin:** Payload CMS
+* **Storage:** Cloud-based audio hosting
+* **Auth:** TBD
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
+---
 
-- #### Media
+## ⚖️ Legal & Rights Model
 
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
+* Artists retain ownership of their lyrics and performances
+* Instrumental rights are defined per challenge
+* No paid voting or lottery mechanics
+* Revenue participation only where explicitly stated
 
-### Docker
+*(This project is designed to avoid gambling, sweepstakes, or lottery classifications.)*
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
+---
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+## 📦 Getting Started (Development)
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+```bash
+# install dependencies
+npm install
 
-## Questions
+# run locally
+npm run dev
+```
 
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+Environment variables and setup instructions will be documented as the project matures.
+
+---
+
+## 🗺️ Roadmap
+
+* [ ] Finalize MVP challenge flow
+* [ ] Improve audio player experience
+* [ ] Artist profiles
+* [ ] Community feedback tools
+* [ ] Monetization experiments (non‑exploitative)
+
+---
+
+## 🤝 Contributing
+
+Contributions, feedback, and ideas are welcome.
+
+If you’re a developer, artist, or producer interested in collaborating, open an issue or reach out.
+
+---
+
+## 📫 Contact
+
+**Wordplay**
+Building a fairer way to compete, create, and be heard.
+
+*(Contact details coming soon)*
+
+---
+
+## 📝 License
+
+License information will be added prior to public release.
