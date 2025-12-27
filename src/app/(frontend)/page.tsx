@@ -18,7 +18,6 @@ const { user } = await payload.auth({ headers: pageHeaders })
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    // title: 'Wordplay | ' + (user ? `${user.username}` : ''),
     title: 'Wordplay | Home',
     description:
       'Wordplay is the home of a once a month rap battle built to bring skill back to the hip hop community.',
@@ -48,5 +47,5 @@ export default async function HomePage() {
     }
   }
 
-  return <div>{Page.layout.map((block) => renderBlock(block))}</div>
+  return <div className="pageContent">{Page.layout.map((block) => renderBlock(block))}</div>
 }

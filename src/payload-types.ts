@@ -214,8 +214,7 @@ export interface Hero {
  */
 export interface SingleAudioPlayer {
   producerName: string;
-  producerBio: string;
-  producerImage: string | Media;
+  trackName: string;
   audioFile: string | Media;
   id?: string | null;
   blockName?: string | null;
@@ -386,8 +385,7 @@ export interface HeroSelect<T extends boolean = true> {
  */
 export interface SingleAudioPlayerSelect<T extends boolean = true> {
   producerName?: T;
-  producerBio?: T;
-  producerImage?: T;
+  trackName?: T;
   audioFile?: T;
   id?: T;
   blockName?: T;

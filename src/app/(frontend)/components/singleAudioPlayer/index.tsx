@@ -1,8 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import { Rock_Salt, Oswald } from 'next/font/google'
 import { Page } from '@/payload-types'
 import { useState, useRef, useEffect } from 'react'
+import cassette from '../../../../../media/Cassette.webp'
+
+const marker = Rock_Salt({ subsets: ['latin'], weight: ['400'] })
+const headerFont = Oswald({ subsets: ['latin'], weight: ['200', '400', '700'] })
 
 type singleAudioPlayerBlockProps = {
   audioFile: any
@@ -66,34 +71,26 @@ export default function SingleAudioPlayer({ block }: { block: singleAudioPlayerB
     return `${minutes}:${formattedSeconds}`
   }
 
+  const trackInfoClass = marker.className + ' trackInfo'
+  const trackInfoText = block.producerName + ' - ' + block.trackName
+
   return (
     <section className="singleAudioPlayer">
-      <div className="producerInfo">
-        {typeof block?.producerImage === 'object' && block.producerImage?.url && (
-          <Image
-            src={block.producerImage.url}
-            alt={block.producerImage.alt || 'Producer Image'}
-            width={100}
-            height={100}
-            className="producerImage"
-          />
-        )}
-        <div className="producerText">
-          <h3 className="producerName">{block.producerName}</h3>
-          <p className="producerBio">{block.producerBio}</p>
-        </div>
-      </div>
+      <p className={trackInfoClass}>{trackInfoText}</p>
       {typeof block?.audioFile === 'object' && block.audioFile?.url && (
         <audio preload="true">
           <source src={block.audioFile.url} type={block.audioFile.mimeType || 'audio/mpeg'} />
         </audio>
       )}
       <div className="singleAudioControls">
-        <div onClick={togglePlay} className={buttonClass}>
-          <span></span>
-          <span></span>
+        <div className="playPauseContainer">
+          <div onClick={togglePlay} className={buttonClass}>
+            <span></span>
+            <span></span>
+          </div>
         </div>
         <div className="progressBarContainer">
+          <div className="timeIndicators currentTime">{currentTime}</div>
           <input
             type="range"
             name="trackProgress"
@@ -111,15 +108,19 @@ export default function SingleAudioPlayer({ block }: { block: singleAudioPlayerB
               }
             }}
           />
-          <div className="timeIndicators">
-            <div className="currentTime">{currentTime}</div>
-            <div className="totalTime">{duration}</div>
-          </div>
+          <div className="timeIndicators totalTime">{duration}</div>
         </div>
       </div>
       <a href={block.audioFile?.url} download="Jan_2026_Wordplay_Beat" className="downloadBtn">
         DOWNLOAD NOW
       </a>
+      <Image
+        src={cassette.src}
+        alt={cassette.alt || 'cassette'}
+        width={cassette.width}
+        height={cassette.height}
+        className="cassette"
+      />
     </section>
   )
 }

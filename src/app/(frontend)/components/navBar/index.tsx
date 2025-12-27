@@ -1,5 +1,6 @@
 import { headers as getHeaders } from 'next/headers.js'
 import Image from 'next/image'
+import Link from 'next/link'
 import { getPayload } from 'payload'
 import React from 'react'
 import { fileURLToPath } from 'url'
@@ -14,27 +15,37 @@ export default async function NavBar() {
   const { user } = await payload.auth({ headers })
 
   return (
-    <nav className="nav">
-      <a href="/" className="navLogo">
-        <img src={logo.src} alt="" width={logo.width / 5} height={logo.height / 5} />
-      </a>
-      <ul>
-        <li>
-          <a href="/submit">Submit</a>
-        </li>
-        <li>
-          <a href="/listen">Listen</a>
-        </li>
-        {user ? (
+    <nav>
+      <div className="nav containContent">
+        <a href="/" className="navLogo">
+          <img src={logo.src} alt="" width={logo.width / 5} height={logo.height / 5} />
+        </a>
+        <ul>
           <li>
-            <a href="/profile">Profile</a>
+            <Link href="/about">About</Link>
           </li>
-        ) : (
           <li>
-            <a href="/login">Login or Sign Up</a>
+            <Link href="/submit">Submit</Link>
           </li>
-        )}
-      </ul>
+          <li>
+            <Link href="/listen">Listen</Link>
+          </li>
+        </ul>
+        <div className="navCTA">
+          {user ? (
+            <div className="navProfileLink">
+              <Link href="/profile">{user.username}</Link>
+            </div>
+          ) : (
+            <div className="navLogin">
+              <Link href="/login">Login</Link>
+              <Link href="/signUp" className="CTABtn">
+                Get Started - Sign Up
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
     </nav>
   )
 }

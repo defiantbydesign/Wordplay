@@ -16,18 +16,10 @@ export const SingleAudioPlayerBlock: Block = {
       required: true,
     },
     {
-      name: 'producerBio',
-      label: "Producer's Bio",
+      name: 'trackName',
+      label: 'Track Name',
       type: 'text',
       required: true,
-    },
-    {
-      name: 'producerImage',
-      label: "Producer's Image",
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
-      mimetypes: ['image/*'],
     },
     {
       name: 'audioFile',
