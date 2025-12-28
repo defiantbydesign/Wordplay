@@ -2,7 +2,7 @@ import { Page } from '@/payload-types'
 import { headers as getHeaders } from 'next/headers.js'
 import config from '@/payload.config'
 import { getPayload } from 'payload'
-import Link from 'next/link'
+import Image from 'next/image'
 
 import { Oswald, Staatliches } from 'next/font/google'
 
@@ -25,7 +25,12 @@ export default function HeroBlock({ block }: { block: HeroBlockProps }) {
       <h3>{block.subheading}</h3>
       {typeof block?.image === 'object' && block.image?.url && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={block.image.url} alt={block.image.alt || 'Hero Image'} />
+        <Image
+          src={block.image.url}
+          alt={block.image.alt || 'Hero Image'}
+          width={block.image.width}
+          height={block.image.height}
+        />
       )}
     </section>
   )

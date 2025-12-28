@@ -1,0 +1,361 @@
+nav {
+  margin: 0 auto;
+  background: linear-gradient(0deg, rgb(13, 28, 48) 0%, rgb(1, 5, 8) 100%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+nav .nav {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 2em;
+  border-bottom: 1px solid #39b54a;
+  letter-spacing: 0.125rem;
+}
+nav .nav .navLogo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.25rem;
+}
+nav .nav .navLogo img {
+  display: block;
+  margin: 1rem 0;
+}
+nav .nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  padding: 0;
+}
+@media (max-width: 480px) {
+  nav .nav ul {
+    gap: 16px;
+  }
+}
+nav .nav ul li {
+  position: relative;
+  padding-right: 2em;
+}
+nav .nav ul li:not(:last-child)::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+nav a {
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: currentColor;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+}
+nav a:hover {
+  color: #39b54a;
+}
+nav .navProfileLink {
+  display: flex;
+}
+nav .navLogin {
+  display: flex;
+  align-items: center;
+  gap: 1.4em;
+}
+
+.CTABtn {
+  background: #39b54a;
+  padding: 0.5em 1.5em;
+  border-radius: 0.5em;
+  color: #081829;
+  font-weight: bold;
+  font-size: 0.75rem;
+  letter-spacing: normal;
+  text-decoration: none;
+  box-shadow: inset0 0 0 0px #39b54a;
+  transition: 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+.CTABtn:hover {
+  color: #39b54a;
+  background: rgba(57, 181, 74, 0.1254901961);
+  box-shadow: inset 0 0 0 1px #39b54a;
+  letter-spacing: normal;
+}
+
+.containContent {
+  width: 90%;
+  margin: 0 auto;
+}
+
+nav {
+  margin: 0 auto;
+  background: linear-gradient(0deg, rgb(13, 28, 48) 0%, rgb(1, 5, 8) 100%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+nav .nav {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 2em;
+  border-bottom: 1px solid #39b54a;
+  letter-spacing: 0.125rem;
+}
+@media (max-width: 768px) {
+  nav .nav {
+    padding: 1px 10px;
+  }
+}
+nav .nav .navLogo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.25rem;
+}
+nav .nav .navLogo img {
+  display: block;
+  margin: 1rem 0;
+}
+nav .nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  padding: 0;
+}
+@media (max-width: 480px) {
+  nav .nav ul {
+    gap: 16px;
+  }
+}
+nav .nav ul li {
+  position: relative;
+  padding-right: 2em;
+}
+nav .nav ul li:not(:last-child)::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+nav a {
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: currentColor;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+}
+nav a:hover {
+  color: #39b54a;
+}
+nav .navProfileLink {
+  display: flex;
+}
+nav .navLogin {
+  display: flex;
+  align-items: center;
+  gap: 1.4em;
+}
+
+.CTABtn {
+  background: #39b54a;
+  padding: 0.5em 1.5em;
+  border-radius: 0.5em;
+  color: #081829;
+  font-weight: bold;
+  font-size: 0.75rem;
+  letter-spacing: normal;
+  text-decoration: none;
+  box-shadow: inset0 0 0 0px #39b54a;
+  transition: 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+.CTABtn:hover {
+  color: #39b54a;
+  background: rgba(57, 181, 74, 0.1254901961);
+  box-shadow: inset 0 0 0 1px #39b54a;
+  letter-spacing: normal;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  position: relative;
+  text-align: center;
+  padding-bottom: 3em;
+}
+.hero h1 {
+  padding-top: 1em;
+  font-size: 5rem;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero h3 {
+  font-weight: 600;
+  width: 60%;
+  font-weight: 100;
+  font-size: 18px;
+  font-weight: 400;
+}
+.hero img {
+  position: absolute;
+  top: -6rem;
+  z-index: -99;
+  width: 75%;
+}
+
+.singleAudioPlayer {
+  position: relative;
+  width: 512px;
+  height: 332px;
+  margin: 0 auto;
+}
+.singleAudioPlayer audio {
+  width: 100%;
+  outline: none;
+  background: transparent;
+}
+.singleAudioPlayer .trackInfo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #010a13;
+  width: 400px;
+  height: 65px;
+  gap: 1em;
+  position: absolute;
+  top: 35px;
+  left: 57px;
+  transform: rotate(-3deg);
+}
+.singleAudioPlayer .trackInfo p {
+  margin: 0;
+}
+.singleAudioPlayer .cassette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.singleAudioPlayer .singleAudioControls {
+  position: relative;
+}
+.singleAudioPlayer .playPauseContainer {
+  position: absolute;
+  top: 128px;
+  left: 235px;
+}
+.singleAudioPlayer .progressBarContainer {
+  width: 23em;
+  position: absolute;
+  top: 196px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2em;
+}
+.singleAudioPlayer .trackSlider {
+  appearance: none;
+  width: 85%;
+  height: 1rem;
+  border: #39b54a solid 3px;
+  background: #e5fce8;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 0;
+  transition: none;
+}
+.singleAudioPlayer .trackSlider::-webkit-slider-thumb, .singleAudioPlayer .trackSlider::-moz-range-thumb {
+  appearance: none;
+  width: 0.01rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: -400px 0 0 400px #8dc63f;
+}
+.singleAudioPlayer .timeIndicators {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #010a13;
+}
+.singleAudioPlayer .playBtn {
+  cursor: pointer;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.singleAudioPlayer .playBtn span {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 1.75rem;
+  background-color: #39b54a;
+  transition: all 0.5s ease;
+}
+.singleAudioPlayer .playBtn span:nth-child(2) {
+  left: auto;
+  right: 0.4rem;
+}
+.singleAudioPlayer .playBtn.pause span:nth-child(2) {
+  transform: translateY(-50%) scaleY(0);
+}
+.singleAudioPlayer .playBtn.pause span:nth-child(1) {
+  width: 1.5rem;
+  height: 1.75rem;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  left: 0.5rem;
+}
+.singleAudioPlayer .downloadBtn {
+  font-weight: 900;
+  position: absolute;
+  top: 250px;
+  left: 93px;
+  padding: 1.25rem 1.75rem;
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #3e424e;
+  transition: 0.3s ease-in-out;
+  text-shadow: 0px 0px 0px #11151e;
+}
+.singleAudioPlayer .downloadBtn:hover {
+  text-shadow: 4px 4px 0px #11151e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.CTABtn {
+  background: #39b54a;
+  padding: 0.5em 1.5em;
+  border-radius: 0.5em;
+  color: #081829;
+  font-weight: bold;
+  font-size: 0.75rem;
+  letter-spacing: normal;
+  text-decoration: none;
+  box-shadow: inset0 0 0 0px #39b54a;
+  transition: 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+.CTABtn:hover {
+  color: #39b54a;
+  background: rgba(57, 181, 74, 0.1254901961);
+  box-shadow: inset 0 0 0 1px #39b54a;
+  letter-spacing: normal;
+}
+
+/*# sourceMappingURL=myStyles.css.map */

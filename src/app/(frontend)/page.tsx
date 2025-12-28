@@ -1,20 +1,14 @@
-import { headers as getHeaders, headers } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload, Payload, Where } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
-
+import { getPayload } from 'payload'
 import config from '@/payload.config'
+import { Metadata } from 'next'
+
 import './styles.css'
 
-import { Metadata } from 'next'
 import HeroBlock from './components/heroBlock'
 import SingleAudioPlayer from './components/singleAudioPlayer'
 
-const pageHeaders = await getHeaders()
 const payloadConfig = await config
 const payload = await getPayload({ config: payloadConfig })
-const { user } = await payload.auth({ headers: pageHeaders })
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -25,8 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
   const {
     docs: [Page],
   } = await payload.find({
@@ -36,7 +28,7 @@ export default async function HomePage() {
     },
   })
 
-  const renderBlock = (block: Page['layout'][0]) => {
+  const renderBlock = (block: (typeof Page)['layout'][0]) => {
     switch (block.blockType) {
       case 'hero':
         return <HeroBlock block={block} key={block.id} />

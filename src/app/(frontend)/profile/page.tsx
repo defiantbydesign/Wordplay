@@ -9,20 +9,19 @@ import '../styles.css'
 
 import { Metadata } from 'next'
 
-const pageHeaders = await getHeaders()
-const payloadConfig = await config
-const payload = await getPayload({ config: payloadConfig })
-const { user } = await payload.auth({ headers: pageHeaders })
+import getUser from '@/app/(auth)/actions/getUser'
 
 export async function generateMetadata(): Promise<Metadata> {
+  const user = await getUser()
   return {
     title: 'Wordplay' + (user ? ` - ${user.username}` : ''),
-    description: 'A simple CMS-powered word game built with Payload and Next.js',
+    description: 'Wordplay is a competitive music platform where artist can prove their skills.',
   }
 }
 
 export default async function HomePage() {
   const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  const user = await getUser()
 
   if (!user) {
     return (

@@ -3,12 +3,14 @@ import './styles.css'
 import NavBar from './components/navBar'
 
 import { Work_Sans } from 'next/font/google'
+import '../../public/myStyles.css'
 
 const workSans = Work_Sans({ subsets: ['latin'], weight: ['100', '400', '600', '800'] })
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description:
+    'Wordplay is a competitive music platform where users can put their skills to the test, and prove what they can do.',
+  title: 'Wordplay',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
